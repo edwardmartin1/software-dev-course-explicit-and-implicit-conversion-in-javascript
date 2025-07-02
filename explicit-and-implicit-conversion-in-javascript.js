@@ -18,15 +18,47 @@ Use console.log() to clearly show the before-and-after type conversions.
 
 */
 
-
+/* no changes made here, the result is correct and uses type coercion */
 let result = "5" - 2;
 console.log("The result is: " + result);
 
-let isValid = Boolean("false");
+/* to fix this I created a strict equality check inside the Boolean() function to see if the value */
+/* on the left side is equal to the string "true" */
+let isValid = Boolean("false" === "true");
+console.log(isValid);
+console.log(typeof isValid);
 if (isValid) {
     console.log("This is valid!");
 }
 
+/* to fix this I used the Number() function to first convert the string "25" to a number */
+/* the addition operation was then able to add 25 and 5 to get a result of 30 */
 let age = "25";
-let totalAge = age + 5;
+let totalAge = Number(age) + 5;
 console.log("Total Age: " + totalAge);
+
+/* example of implicit type conversion */
+console.log("Example of implicit type conversion:");
+let numberDays = 10;
+console.log(typeof numberDays);
+let erruptionMessage = "Number of days since volcano eruption: " + numberDays;
+console.log(typeof erruptionMessage);
+console.log(erruptionMessage);
+
+
+/* example of explicit type conversion */
+console.log("Example of explicit type conversion:");
+let isActive;
+console.log(typeof isActive);
+isActive = Boolean(isActive);
+console.log(typeof isActive);
+console.log(isActive);
+
+if (isActive)
+{
+  console.log("Volcano is active");
+}
+else
+{
+  console.log("Volcano is dormant");
+}
